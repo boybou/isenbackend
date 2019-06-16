@@ -88,6 +88,27 @@ app.get('/sound/:epoch', (req, res) =>{
     })
 });
 
+app.get('/vocalization/:epoch', (req, res) =>{
+
+    let epoch = parseInt(req.params["epoch"]);
+    let endEpoch = epoch + 86400;
+
+    let con = mysql.createConnection({
+        host: "localhost",
+        user: "isen",
+        password: "isen123",
+        database: "isen"
+    });
+
+    con.connect((err) =>{
+        if (err) throw err;
+        con.query(`SELECT * FROM Vocalization where timestamp >= ${epoch} and timestamp <= ${endEpoch}`, (err,result,fields) =>{
+            console.log(result);
+            res.send(result)
+        })
+    })
+});
+
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 module.exports = app;
