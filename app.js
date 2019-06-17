@@ -4,17 +4,19 @@ const app = express();
 const port = 3000;
 const fs = require("fs");
 
+const mysqlConfig = {
+    host: "localhost",
+    user: "isenUser",
+    password: "isen123",
+    database: "isen"
+};
+
 app.get('/humidity/:epoch', (req, res) => {
 
     let epoch = parseInt(req.params["epoch"]);
     let endEpoch = epoch + 86400;
 
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "isen",
-        password: "isen123",
-        database: "isen"
-    });
+    let con = mysql.createConnection(mysqlConfig);
 
     con.connect((err) =>{
         if (err) throw err;
@@ -32,12 +34,7 @@ app.get('/light/:epoch', (req, res) => {
     console.log(epoch);
 
 
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "isen",
-        password: "isen123",
-        database: "isen"
-    });
+    let con = mysql.createConnection(mysqlConfig);
 
     con.connect((err) =>{
         if (err) throw err;
@@ -52,12 +49,7 @@ app.get('/temperature/:epoch', (req, res) =>{
     let epoch = parseInt(req.params["epoch"]);
     let endEpoch = epoch + 86400;
 
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "isen",
-        password: "isen123",
-        database: "isen"
-    });
+    let con = mysql.createConnection(mysqlConfig);
 
     con.connect((err) =>{
         if (err) throw err;
@@ -72,12 +64,7 @@ app.get('/sound/:epoch', (req, res) =>{
     let epoch = parseInt(req.params["epoch"]);
     let endEpoch = epoch + 86400;
 
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "isen",
-        password: "isen123",
-        database: "isen"
-    });
+    let con = mysql.createConnection(mysqlConfig);
 
     con.connect((err) =>{
         if (err) throw err;
@@ -93,12 +80,7 @@ app.get('/vocalization/:epoch', (req, res) =>{
     let epoch = parseInt(req.params["epoch"]);
     let endEpoch = epoch + 86400;
 
-    let con = mysql.createConnection({
-        host: "localhost",
-        user: "isen",
-        password: "isen123",
-        database: "isen"
-    });
+    let con = mysql.createConnection(mysqlConfig);
 
     con.connect((err) =>{
         if (err) throw err;
