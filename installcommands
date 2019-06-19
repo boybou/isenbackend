@@ -1,0 +1,54 @@
+apt-get update
+apt-get install i2c-tools
+apt-get install python3-pip
+apt-get install python-smbus
+sudo pip3 install smbus
+sudo pip3 install sensor
+sudo apt-get install libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
+sudo pip3 install pyaudio
+sudo pip3 install pymysql
+sudo pip3 install scipy
+sudo pip3 install pydub
+sudo apt-get install libatlas-base-dev
+apt-get install mysql-server
+mysql -u root
+CREATE DATABASE isen;
+CREATE USER 'isenUser' IDENTIFIED BY 'isen123';
+GRANT ALL PRIVILEGES ON isen.* TO 'isenUser';
+USE isen;
+CREATE TABLE Temperature (
+  timestamp INT NOT NULL,
+  value FLOAT NOT NULL
+);
+CREATE TABLE Sound (
+  timestamp INT NOT NULL,
+  path VARCHAR(255) NOT NULL
+);
+CREATE TABLE Humidity (
+  timestamp INT NOT NULL,
+  value FLOAT NOT NULL
+);
+CREATE TABLE Light (
+  timestamp INT NOT NULL,
+  value_ir FLOAT NOT NULL,
+  value_v FLOAT NOT NULL
+);
+CREATE TABLE Vocalization (
+  timestamp INT NOT NULL,
+  count INTEGER NOT NULL
+);
+quit
+mkdir sensor
+cd sensor
+mkdir wavfiles
+mkdir backend
+cd backend
+apt-get install nodejs
+apt-get install npm
+npm install express
+npm install mysql
+sudo apt-get install apache2
+sudo apt-get install ufw
+sudo ufw allow 'WWW'
+cd /var/www/html
+rm index.html
