@@ -52,7 +52,6 @@ app.post('/all',(req,res)=>{
         });
         res.send(results)
 
-        con.end()
     })
 });
 
@@ -70,7 +69,6 @@ app.get('/humidity/:epoch', (req, res) => {
         })
     })
 
-    con.end()
 });
 
 app.get('/light/:epoch', (req, res) => {
@@ -89,7 +87,6 @@ app.get('/light/:epoch', (req, res) => {
             res.send(result)
         })
     })
-    con.end()
 });
 
 app.get('/temperature/:epoch', (req, res) =>{
@@ -105,7 +102,6 @@ app.get('/temperature/:epoch', (req, res) =>{
             res.send(result)
         })
     })
-    con.end()
 });
 
 app.get('/sound/:epoch', (req, res) =>{
@@ -117,12 +113,11 @@ app.get('/sound/:epoch', (req, res) =>{
 
     con.connect((err) =>{
         if (err) throw err;
-        con.query(`SELECT * FROM Vocalization where timestamp >= ${epoch} and timestamp <= ${endEpoch}`, (err,result,fields) =>{
+        con.query(`SELECT * FROM Sound where timestamp >= ${epoch} and timestamp <= ${endEpoch}`, (err,result,fields) =>{
             console.log(result);
             res.send(result)
         })
     })
-    con.end()
 });
 
 app.get('/vocalization/:epoch', (req, res) =>{
@@ -139,7 +134,6 @@ app.get('/vocalization/:epoch', (req, res) =>{
             res.send(result)
         })
     })
-    con.end()
 });
 
 
