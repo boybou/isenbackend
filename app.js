@@ -83,7 +83,7 @@ app.get('/light/:epoch', (req, res) => {
 
     con.connect((err) =>{
         if (err) throw err;
-        con.query(`SELECT * FROM Vocalization where timestamp >= ${epoch} and timestamp <= ${endEpoch}`, (err,result,fields) =>{
+        con.query(`SELECT * FROM Light where timestamp >= ${epoch} and timestamp <= ${endEpoch}`, (err,result,fields) =>{
             res.send(result)
         })
     })
@@ -98,7 +98,7 @@ app.get('/temperature/:epoch', (req, res) =>{
 
     con.connect((err) =>{
         if (err) throw err;
-        con.query(`SELECT * FROM Vocalization where timestamp >= ${epoch} and timestamp <= ${endEpoch}`, (err,result,fields) =>{
+        con.query(`SELECT * FROM Temperature where timestamp >= ${epoch} and timestamp <= ${endEpoch}`, (err,result,fields) =>{
             res.send(result)
         })
     })
